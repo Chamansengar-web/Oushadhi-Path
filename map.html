@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Interactive Map — Oushadhi Path</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-logo" aria-hidden="true"></span>
+          <span class="brand-name">Oushadhi Path</span>
+        </a>
+        <div class="nav-links" data-nav>
+          <a href="index.html">Home</a>
+          <a href="input.html">Trace</a>
+          <a href="about.html">About</a>
+        </div>
+        <button class="hamburger" data-hamburger aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="container mobile-menu" data-mobile-menu>
+        <div data-nav>
+          <a href="index.html">Home</a>
+          <a href="input.html">Trace</a>
+          <a href="about.html">About</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container hero">
+      <h1 class="hero-title">Interactive Map View</h1>
+      <p class="hero-sub">Visualize geo-tagged herb collection points and sourcing zones.
+      </p>
+
+      <section class="card">
+        <div class="row justify-between">
+          <div class="row">
+            <label class="muted" for="filterHerb">Herb</label>
+            <select class="input" id="filterHerb" title="Filter by herb type">
+              <option value="">All Herbs</option>
+              <option>Ashwagandha</option>
+              <option>Triphala</option>
+              <option>Tulsi</option>
+            </select>
+            <label class="muted" for="filterRegion">Region</label>
+            <select class="input" id="filterRegion" title="Filter by region">
+              <option value="">All Regions</option>
+              <option>Western Ghats</option>
+              <option>Himalayas</option>
+              <option>Deccan Plateau</option>
+            </select>
+            <label class="muted" for="filterCert">Certification</label>
+            <select class="input" id="filterCert" title="Filter by certification">
+              <option value="">Any Certification</option>
+              <option>Organic</option>
+              <option>Fair Trade</option>
+              <option>GACP</option>
+            </select>
+          </div>
+          <div class="row">
+            <label class="row gap-6" for="satToggle"><input type="checkbox" id="satToggle" /> <span>Satellite</span></label>
+          </div>
+        </div>
+        <div id="mapBox" class="map mt-12"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container row justify-between">
+        <div class="muted">© <span id="year"></span> Oushadhi Path</div>
+        <div class="row">
+          <a class="muted" href="#">Terms</a>
+          <a class="muted" href="#">Privacy</a>
+          <a class="muted" href="about.html#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <script src="assets/js/main.js"></script>
+    <script type="module">
+      const box = document.getElementById('mapBox');
+      function render(satellite) {
+        box.innerHTML = `<div class="muted p-12">` +
+          (satellite ? 'Satellite view: ' : 'Map view: ') +
+          'Pins for Ashwagandha · Tulsi · Triphala — hover to view collector info</div>';
+      }
+      document.getElementById('satToggle').addEventListener('change', (e) => render(e.target.checked));
+      render(false);
+    </script>
+  </body>
+</html>
+

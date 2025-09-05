@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Oushadhi Path — Ayurvedic Provenance on Blockchain</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-logo" aria-hidden="true"></span>
+          <span class="brand-name">Oushadhi Path</span>
+        </a>
+        <div class="nav-links" data-nav>
+          <a href="index.html">Home</a>
+          <a href="input.html">Trace</a>
+          <a href="about.html">About</a>
+        </div>
+        <button class="hamburger" data-hamburger aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="container mobile-menu" data-mobile-menu>
+        <div data-nav>
+          <a href="index.html">Home</a>
+          <a href="input.html">Trace</a>
+          <a href="about.html">About</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container hero">
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-title">Trace the journey of Ayurvedic herbs from source to shelf</h1>
+          <p class="hero-sub">A blockchain-powered provenance portal for transparency, quality, and sustainability across the herbal supply chain.</p>
+          <div class="row">
+            <a class="btn" href="input.html">Scan QR Code</a>
+            <a class="btn secondary" href="input.html">Enter Product Code</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3 class="section-title">How it works</h3>
+          <p class="muted">Each batch is recorded on an immutable ledger with FHIR-compliant data. View collection GPS, processing steps, lab results, and certifications.</p>
+          <div class="grid grid-3 mt-12">
+            <div class="card"><strong>Collect</strong><div class="muted">Geo-tagged harvest</div></div>
+            <div class="card"><strong>Process</strong><div class="muted">Dry, grind, store</div></div>
+            <div class="card"><strong>Verify</strong><div class="muted">Quality tests & certificates</div></div>
+          </div>
+        </div>
+      </div>
+
+      <section>
+        <h3 class="section-title">Why Oushadhi Path?</h3>
+        <div class="grid grid-3">
+          <div class="card">
+            <strong>Trust</strong>
+            <p class="muted">Blockchain-backed records increase consumer confidence in product integrity.</p>
+          </div>
+          <div class="card">
+            <strong>Compliance</strong>
+            <p class="muted">FHIR bundles standardize data for interoperability and auditability.</p>
+          </div>
+          <div class="card">
+            <strong>Sustainability</strong>
+            <p class="muted">Support communities and biodiversity through transparent sourcing.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container row justify-between">
+        <div class="muted">© <span id="year"></span> Oushadhi Path</div>
+        <div class="row">
+          <a class="muted" href="#">Terms</a>
+          <a class="muted" href="#">Privacy</a>
+          <a class="muted" href="about.html#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </body>
+</html>
+

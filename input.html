@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trace Product — Oushadhi Path</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-logo" aria-hidden="true"></span>
+          <span class="brand-name">Oushadhi Path</span>
+        </a>
+        <div class="nav-links" data-nav>
+          <a href="index.html">Home</a>
+          <a href="input.html">Trace</a>
+          <a href="about.html">About</a>
+        </div>
+        <button class="hamburger" data-hamburger aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="container mobile-menu" data-mobile-menu>
+        <div data-nav>
+          <a href="index.html">Home</a>
+          <a href="input.html">Trace</a>
+          <a href="about.html">About</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container hero">
+      <h1 class="hero-title">Scan or enter your product code</h1>
+      <p class="hero-sub">Use your device camera to scan the QR or manually enter the batch ID.</p>
+
+      <div class="grid grid-2">
+        <section class="card">
+          <h3 class="section-title">Manual entry</h3>
+          <div class="input-group">
+            <input id="batchInput" class="input" type="text" placeholder="Enter Batch ID (e.g., BATCH-AYU-2025-0001)" />
+            <div class="row">
+              <button class="btn" id="viewBtn">View Traceability</button>
+              <button class="btn secondary" id="demoBtn">Use Demo Batch</button>
+            </div>
+          </div>
+        </section>
+        <section class="card">
+          <h3 class="section-title">Scan QR</h3>
+          <p class="muted">Camera scanner placeholder. Integrate a library like `@zxing/browser` for production.</p>
+          <div class="map center-box">
+            <span class="muted">QR preview area</span>
+          </div>
+          <div class="space"></div>
+          <button class="btn secondary" id="scanBtn">Simulate Scan</button>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container row justify-between">
+        <div class="muted">© <span id="year"></span> Oushadhi Path</div>
+        <div class="row">
+          <a class="muted" href="#">Terms</a>
+          <a class="muted" href="#">Privacy</a>
+          <a class="muted" href="about.html#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const input = document.getElementById('batchInput');
+      const viewBtn = document.getElementById('viewBtn');
+      const scanBtn = document.getElementById('scanBtn');
+      const demoBtn = document.getElementById('demoBtn');
+      viewBtn.addEventListener('click', () => window.App.goToDetailsWithBatch(input.value.trim()));
+      demoBtn.addEventListener('click', () => { input.value = 'BATCH-AYU-2025-0001'; });
+      scanBtn.addEventListener('click', () => window.App.simulateScanToInput('batchInput'));
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <script src="assets/js/main.js"></script>
+  </body>
+  
+</html>
+

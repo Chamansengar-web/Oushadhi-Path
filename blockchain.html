@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blockchain Record Viewer — Oushadhi Path</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-logo" aria-hidden="true"></span>
+          <span class="brand-name">Oushadhi Path</span>
+        </a>
+        <div class="nav-links" data-nav>
+          <a href="index.html">Home</a>
+          <a href="input.html">Trace</a>
+          <a href="about.html">About</a>
+        </div>
+        <button class="hamburger" data-hamburger aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="container mobile-menu" data-mobile-menu>
+        <div data-nav>
+          <a href="index.html">Home</a>
+          <a href="input.html">Trace</a>
+          <a href="about.html">About</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container hero">
+      <h1 class="hero-title">Blockchain Record Viewer</h1>
+      <p class="hero-sub">See how events are secured on-chain per batch.</p>
+
+      <section class="card">
+        <div class="input-group">
+          <input id="bcBatch" class="input" type="text" placeholder="Enter Batch ID" />
+          <div class="row"><button class="btn" id="bcLoad">Load Transactions</button></div>
+        </div>
+      </section>
+
+      <div class="grid grid-2">
+        <section class="card">
+          <h3 class="section-title">Ledger</h3>
+          <div id="ledger" class="timeline"></div>
+        </section>
+        <section class="card">
+          <h3 class="section-title">Smart Contract</h3>
+          <div class="grid">
+            <div><strong>Contract</strong><div class="muted"><a id="bcContract" href="#">View on Explorer</a></div></div>
+            <div><strong>Latest Hash</strong><div class="muted" id="bcLatest">—</div></div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container row justify-between">
+        <div class="muted">© <span id="year"></span> Oushadhi Path</div>
+        <div class="row">
+          <a class="muted" href="#">Terms</a>
+          <a class="muted" href="#">Privacy</a>
+          <a class="muted" href="about.html#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <script src="assets/js/main.js"></script>
+    <script type="module">
+      const ledger = document.getElementById('ledger');
+      const latest = document.getElementById('bcLatest');
+      const contract = document.getElementById('bcContract');
+      document.getElementById('bcLoad').addEventListener('click', () => {
+        const batch = document.getElementById('bcBatch').value.trim() || 'BATCH-AYU-2025-0001';
+        const items = [
+          { ev: 'Harvest', ts: '2025-08-18T09:12:21Z', tx: '0xabc123' },
+          { ev: 'Drying', ts: '2025-08-20T11:01:05Z', tx: '0xdef456' },
+          { ev: 'Grinding', ts: '2025-08-22T08:43:10Z', tx: '0x987654' },
+          { ev: 'Testing', ts: '2025-08-24T16:31:54Z', tx: '0x55aa77' },
+          { ev: 'Packaging', ts: '2025-08-25T10:05:00Z', tx: '0x777333' }
+        ];
+        ledger.innerHTML = items.map(i => `<div class="t-item"><strong>${i.ev}</strong> — ${new Date(i.ts).toLocaleString()}<div class="muted">Tx: ${i.tx}</div></div>`).join('');
+        latest.textContent = '0x7f9c...a12e';
+        contract.href = '#';
+      });
+    </script>
+  </body>
+</html>
+

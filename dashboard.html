@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Real-Time Traceability Dashboard — Oushadhi Path</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-logo" aria-hidden="true"></span>
+          <span class="brand-name">Oushadhi Path</span>
+        </a>
+        <div class="nav-links" data-nav>
+          <a href="index.html">Home</a>
+          <a href="input.html">Trace</a>
+          <a href="about.html">About</a>
+        </div>
+        <button class="hamburger" data-hamburger aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="container mobile-menu" data-mobile-menu>
+        <div data-nav>
+          <a href="index.html">Home</a>
+          <a href="input.html">Trace</a>
+          <a href="about.html">About</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container hero">
+      <h1 class="hero-title">Real-Time Herb Traceability Dashboard</h1>
+      <p class="hero-sub">Scan or enter a batch number to view live provenance, processing, testing, and blockchain verification.</p>
+
+      <div class="grid grid-2">
+        <section class="card">
+          <h3 class="section-title">Batch</h3>
+          <div class="input-group">
+            <input id="dashBatch" class="input" type="text" placeholder="Enter Batch ID (e.g., BATCH-AYU-2025-0001)" />
+            <div class="row">
+              <button class="btn" id="dashView">View Details</button>
+              <button class="btn secondary" id="dashDemo">Use Demo</button>
+              <button class="btn secondary" id="dashScan">Simulate Scan</button>
+            </div>
+          </div>
+        </section>
+        <section class="card">
+          <h3 class="section-title">Blockchain Verification</h3>
+          <div class="grid">
+            <div><strong>Batch</strong><div class="muted" data-bind-batch></div></div>
+            <div><strong>Verification Hash</strong><div class="muted" id="bcHash">0x—</div></div>
+            <div><strong>Smart Contract</strong><div class="muted"><a href="#" id="contractLink">View Contract</a></div></div>
+            <div><button class="btn" id="downloadReport">Download Traceability Report (PDF)</button></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="grid grid-2">
+        <section class="card">
+          <h3 class="section-title">Collection Map</h3>
+          <div id="dashMap" class="map"></div>
+          <div class="space"></div>
+          <div class="grid">
+            <div><strong>Location</strong><div class="muted" data-bind-location></div></div>
+            <div><strong>Collector</strong><div class="muted" data-bind-collector></div></div>
+          </div>
+        </section>
+        <section class="card">
+          <h3 class="section-title">Interactive Timeline</h3>
+          <div id="dashTimeline" class="timeline"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container row justify-between">
+        <div class="muted">© <span id="year"></span> Oushadhi Path</div>
+        <div class="row">
+          <a class="muted" href="#">Terms</a>
+          <a class="muted" href="#">Privacy</a>
+          <a class="muted" href="about.html#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const input = document.getElementById('dashBatch');
+      const viewBtn = document.getElementById('dashView');
+      const scanBtn = document.getElementById('dashScan');
+      const demoBtn = document.getElementById('dashDemo');
+      const bcHash = document.getElementById('bcHash');
+      const contractLink = document.getElementById('contractLink');
+      const timeline = document.getElementById('dashTimeline');
+      const map = document.getElementById('dashMap');
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      function loadMock(batchId) {
+        // Reuse details mock rendering bindings
+        const url = new URL('details.html', window.location.href);
+        url.searchParams.set('batch', batchId);
+        const demoHash = '0x7f9c...a12e';
+        bcHash.textContent = demoHash;
+        contractLink.href = '#';
+        document.querySelectorAll('[data-bind-batch]').forEach(el => el.textContent = batchId);
+        // Minimal map/timeline placeholders
+        if (map) map.innerHTML = '<div class="muted" style="padding:12px">Map showing geo-tagged collection</div>';
+        if (timeline) timeline.innerHTML = [
+          '<div class="t-item"><strong>Collection</strong> — 2025-08-18<div class="muted">Pune District · Sahyadri Herbal Co-op</div></div>',
+          '<div class="t-item"><strong>Drying</strong> — 2025-08-20<div class="muted">Solar tunnel drying</div></div>',
+          '<div class="t-item"><strong>Testing</strong> — 2025-08-24<div class="muted">HPTLC · Certificate</div></div>',
+          '<div class="t-item"><strong>Packaging</strong> — 2025-08-25<div class="muted">Sealed & labeled</div></div>'
+        ].join('');
+        document.querySelector('[data-bind-location]').textContent = 'Pune District, Maharashtra';
+        document.querySelector('[data-bind-collector]').textContent = 'Sahyadri Herbal Co-op';
+      }
+
+      viewBtn.addEventListener('click', () => {
+        const v = input.value.trim();
+        if (!v) return;
+        loadMock(v);
+      });
+      demoBtn.addEventListener('click', () => { input.value = 'BATCH-AYU-2025-0001'; loadMock(input.value); });
+      scanBtn.addEventListener('click', () => { window.App.simulateScanToInput('dashBatch'); loadMock(input.value); });
+    </script>
+    <script src="assets/js/main.js"></script>
+  </body>
+  
+</html>
+

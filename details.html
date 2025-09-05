@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Provenance Details — Oushadhi Path</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body onload="init()">
+    <nav class="navbar">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-logo" aria-hidden="true"></span>
+          <span class="brand-name">Oushadhi Path</span>
+        </a>
+        <div class="nav-links" data-nav>
+          <a href="index.html">Home</a>
+          <a href="input.html">Trace</a>
+          <a href="about.html">About</a>
+        </div>
+        <button class="hamburger" data-hamburger aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="container mobile-menu" data-mobile-menu>
+        <div data-nav>
+          <a href="index.html">Home</a>
+          <a href="input.html">Trace</a>
+          <a href="about.html">About</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container hero">
+      <h1 class="hero-title">Batch <span data-bind-batch></span></h1>
+      <p class="hero-sub">Explore collection, processing, lab results, and community details.</p>
+
+      <div class="grid grid-2">
+        <section class="card">
+          <h3 class="section-title">Product</h3>
+          <div class="grid">
+            <div><strong>Herb</strong><div class="muted" data-bind-herb></div></div>
+            <div><strong>Formulation</strong><div class="muted" data-bind-formulation></div></div>
+            <div><strong>Manufacturer</strong><div class="muted" data-bind-manufacturer></div></div>
+            <div><strong>Batch ID</strong><div class="muted" data-bind-batch></div></div>
+          </div>
+        </section>
+        <section class="card">
+          <h3 class="section-title">Collection Location</h3>
+          <div id="map" class="map"></div>
+          <div class="space"></div>
+          <div class="grid">
+            <div><strong>Date</strong><div class="muted" data-bind-date></div></div>
+            <div><strong>Location</strong><div class="muted" data-bind-location></div></div>
+            <div><strong>Collector</strong><div class="muted" data-bind-collector></div></div>
+          </div>
+        </section>
+      </div>
+
+      <section class="card">
+        <h3 class="section-title">Timeline</h3>
+        <div id="timeline" class="timeline"></div>
+      </section>
+
+      <div class="grid grid-2">
+        <section class="card">
+          <h3 class="section-title">Quality Tests</h3>
+          <p class="muted">View lab results and download certifications.</p>
+          <div id="quality"></div>
+        </section>
+        <section class="card">
+          <h3 class="section-title">Community</h3>
+          <div class="grid">
+            <div class="row"><div class="avatar-56"></div>
+            <div>
+              <strong id="communityName">Sahyadri Herbal Co-op</strong>
+              <div class="muted" id="communityRegion">Western Ghats</div>
+            </div></div>
+            <div class="badges" id="badges"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container row justify-between">
+        <div class="muted">© <span id="year"></span> Oushadhi Path</div>
+        <div class="row">
+          <a class="muted" href="#">Terms</a>
+          <a class="muted" href="#">Privacy</a>
+          <a class="muted" href="about.html#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      window.init = () => {
+        document.getElementById('year').textContent = new Date().getFullYear();
+        window.App.renderProvenanceIfPresent();
+      };
+    </script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
+

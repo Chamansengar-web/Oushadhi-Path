@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About — Oushadhi Path</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-logo" aria-hidden="true"></span>
+          <span class="brand-name">Oushadhi Path</span>
+        </a>
+        <div class="nav-links" data-nav>
+          <a href="index.html">Home</a>
+          <a href="input.html">Trace</a>
+          <a href="about.html">About</a>
+        </div>
+        <button class="hamburger" data-hamburger aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="container mobile-menu" data-mobile-menu>
+        <div data-nav>
+          <a href="index.html">Home</a>
+          <a href="input.html">Trace</a>
+          <a href="about.html">About</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container hero">
+      <h1 class="hero-title">About the platform</h1>
+      <p class="hero-sub">Transparency and trust for Ayurvedic herbal products through open standards.</p>
+
+      <section class="card">
+        <h3 class="section-title">Technology</h3>
+        <div class="grid grid-2">
+          <div>
+            <strong>Blockchain</strong>
+            <p class="muted">Built on Hyperledger Fabric for permissioned, enterprise-grade provenance. Each event (CollectionEvent, ProcessingStep, QualityTest) is immutably recorded.</p>
+          </div>
+          <div>
+            <strong>Data Interoperability</strong>
+            <p class="muted">FHIR bundles standardize entities and enable secure data exchange with labs, manufacturers, and regulators.</p>
+          </div>
+          <div>
+            <strong>Security</strong>
+            <p class="muted">Role-based access, MSP identities, and audit trails ensure integrity without exposing private data.</p>
+          </div>
+          <div>
+            <strong>Sustainability</strong>
+            <p class="muted">Traceability spotlights responsible sourcing, fair trade practices, and biodiversity conservation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="contact">
+        <h3 class="section-title">Contact</h3>
+        <div class="grid">
+          <div class="row">
+            <div><strong>Email</strong></div>
+            <div class="muted">contact@oushadhipath.example</div>
+          </div>
+          <div class="row">
+            <div><strong>Address</strong></div>
+            <div class="muted">Pune, Maharashtra, India</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container row justify-between">
+        <div class="muted">© <span id="year"></span> Oushadhi Path</div>
+        <div class="row">
+          <a class="muted" href="#">Terms</a>
+          <a class="muted" href="#">Privacy</a>
+          <a class="muted" href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </body>
+</html>
+
